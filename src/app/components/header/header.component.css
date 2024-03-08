@@ -111,6 +111,8 @@ body {
     transition: all 0.5s;
     z-index: 997;
     padding: 15px 0;
+    background: rgba(0.8, 0.8, 0.8, 0.4);
+    
   }
   
   #header.header-scrolled,
