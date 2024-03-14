@@ -18,12 +18,13 @@ import { TeamComponent } from './components/team/team.component';
 import { WhyUsComponent } from './components/why-us/why-us.component';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { MutugeModule } from './mutuge/mutuge.module';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule,RouterOutlet,RouterLink, RouterLinkActive,AboutComponent,ClientsComponent,ContactComponent,CtaComponent,FaqComponent,FooterComponent,HeaderComponent,
+  imports: [CommonModule,RouterOutlet,RouterLink, MutugeModule, RouterLinkActive,AboutComponent,ClientsComponent,ContactComponent,CtaComponent,FaqComponent,FooterComponent,HeaderComponent,
   HeroComponent,PortfolioComponent,PricingComponent,ServicesComponent,SkillsComponent,TeamComponent,WhyUsComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

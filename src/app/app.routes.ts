@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import { Routes, mapToResolve } from '@angular/router';
 import { AboutComponent } from './components/about/about.component';
 import { ClientsComponent } from './components/clients/clients.component';
 import { ContactComponent } from './components/contact/contact.component';
@@ -13,6 +13,7 @@ import { ServicesComponent } from './components/services/services.component';
 import { SkillsComponent } from './components/skills/skills.component';
 import { TeamComponent } from './components/team/team.component';
 import { WhyUsComponent } from './components/why-us/why-us.component';
+import { MpesaComponent } from './mutuge/mpesa/mpesa.component';
 
 
 export const routes: Routes = [
@@ -25,5 +26,6 @@ export const routes: Routes = [
     {title: "Ian's Template |Team",path: 'team', component: TeamComponent },
     {title: "Ian's Template |Footer",path: 'footer', component: FooterComponent },
     {title: "Ian's Template |Pricing",path: 'pricing', component: PricingComponent },
-   
+    {title: "Ian's Template |Mpesa",path: 'mpesa', component: MpesaComponent },
+   // {title: "Ian's Template |Mpesa success",path: 'stk_initiate.php', component: MpesaComponent },
 ];

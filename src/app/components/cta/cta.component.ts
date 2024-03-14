@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component} from '@angular/core';
 import { ConfigItem } from '../../services/config-item';
 import { ConfigService } from '../../services/config.service';
 @Component({
@@ -11,11 +11,10 @@ import { ConfigService } from '../../services/config.service';
 export class CtaComponent {
 
   header!: ConfigItem| undefined;
-  configService: ConfigService = inject(ConfigService);
 
-  constructor() {
+  constructor(private cnf : ConfigService) {
     //this.header=this.configService.getPageByName("cta");
-    this.configService.getPageById(1).subscribe(
+    this.cnf.getPageById(1).subscribe(
       (response) =>this.header=response
 
     );
