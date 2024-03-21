@@ -41,6 +41,8 @@
 <script src="./assets/vendor/waypoints/noframework.waypoints.js"></script>
 <script src="./assets/vendor/php-email-form/validate.js"></script>
 
+<!-- Add this line before your JavaScript code -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 
   <!-- Template Main JS File -->
@@ -60,5 +62,12 @@
   <app-root>
     <div id="preloader"></div>
   </app-root>
+  <script>
+    function showForm(formId) {
+        $('.form-container').hide(); // Hide all forms
+        $('#' + formId).show(); // Show the selected form
+    }
+</script>
+  
 </body>
 </html>

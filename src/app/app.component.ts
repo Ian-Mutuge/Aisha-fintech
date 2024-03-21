@@ -21,6 +21,7 @@ import 'aos/dist/aos.css';
 import { MutugeModule } from './mutuge/mutuge.module';
 
 
+
 @Component({
   selector: 'app-root',
   standalone: true,

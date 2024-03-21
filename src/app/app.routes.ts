@@ -27,5 +27,5 @@ export const routes: Routes = [
     {title: "Ian's Template |Footer",path: 'footer', component: FooterComponent },
     {title: "Ian's Template |Pricing",path: 'pricing', component: PricingComponent },
     {title: "Ian's Template |Mpesa",path: 'mpesa', component: MpesaComponent },
-   // {title: "Ian's Template |Mpesa success",path: 'stk_initiate.php', component: MpesaComponent },
+    //{title: "Ian's Template |Mpesa success",path: 'stk_initiate.php', component: MpesaComponent },
 ];

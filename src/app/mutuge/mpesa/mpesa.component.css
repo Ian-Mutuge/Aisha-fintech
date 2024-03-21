@@ -45,7 +45,22 @@ h6 {
 .mpesa {
   background-color: green !important;
 }
+.new {
+  background-color: white !important;
+  text-decoration-color: blue !important; /* This property is not supported by all browsers */
+}
+
 
 img {
   border-radius: 15px;
+}
+#paypalForm, #cardForm {
+  display: none;
+}
+.invalid-feedback {
+  color: red;
+}
+
+.form-control.is-invalid {
+  border-color: red;
 }

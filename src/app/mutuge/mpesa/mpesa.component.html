@@ -24,36 +24,86 @@
     <div class="container d-flex justify-content-center">
       <div class="card mt-5 px-3 py-4">
         <div class="d-flex flex-row justify-content-around">
-          <div class="mpesa"><span>Mpesa </span></div>
-          <div><span>Paypal</span></div>
-          <div><span>Card</span></div>
+          <button class="btn btn-success" onclick="showForm('mpesaForm')">Mpesa</button>
+          <button class="btn" style="background-color: white; color: blue; border: 1px solid blue; border-radius: 5px; padding: 5px 10px;" onclick="showForm('paypalForm')">Paypal</button>
+          <button class="btn" style="background-color: white; color: blue; border: 1px solid blue; border-radius: 5px; padding: 5px 10px;" onclick="showForm('cardForm')">Card</button>
         </div>
-        <div class="media mt-4 pl-2">
-          <img src="assets/img/1200px-M-PESA_LOGO-01.svg.png" class="mr-3" height="75" />
-          <div class="media-body">
-            <h6 class="mt-1">Enter Amount & Number</h6>
-          </div>
-        </div>
+        
         <div class="media mt-3 pl-2">
-                          <!--bs5 input-->
+                        
 
-            <form class="row g-3" action="./stk_initiate.php" method="POST">
-            
-                <div class="col-12">
-                  <label for="inputAddress" class="form-label">Amount</label>
-                  <input type="text" class="form-control" name="amount" placeholder="Enter Amount">
-                </div>
-                <div class="col-12">
-                  <label for="inputAddress2" class="form-label" >Phone Number</label>
-                  <input type="text" class="form-control" name="phone"  placeholder="Enter Phone Number">
-                </div>
-             
-                <div class="col-12">
-                  <button type="submit" class="btn btn-success" name="submit" value="submit">Donate</button>
-                </div>
-              </form>
+          <form class="row g-3 form-container"  id="mpesaForm" [formGroup]="mpesaForm" action="http://localhost/my-app/src/app/mutuge/mpesa/stk_initiate.php" method="POST">
+            <div class="media mt-4 pl-2">
+              <img src="assets/img/1200px-M-PESA_LOGO-01.svg.png" class="mr-3" height="75" />
+              <div class="media-body">
+                <h6 class="mt-1">Enter Amount & Number</h6>
+              </div>
+            </div>
+            <div class="col-12">
+              <label for="inputAmount" class="form-label">Amount</label>
+              <input type="text" class="form-control" id="inputAmount" placeholder="Enter Amount" formControlName="amountFormControl"  name="amount">
+              <div *ngIf="mpesaForm.controls['amountFormControl'].invalid && (mpesaForm.controls['amountFormControl'].touched||mpesaForm.controls['amountFormControl'].dirty)" class="text-danger">
+                <span *ngIf="mpesaForm.controls['amountFormControl'].errors?.['required']">This is required</span>
+               </div>
+            </div>
+            <div class="col-12">
+              <label for="inputPhone" class="form-label">Phone Number</label>
+              <input type="text" class="form-control" id="inputPhone" placeholder="Enter Phone Number" formControlName="phoneFormControl" name="phone">
+              <div *ngIf="mpesaForm.controls['phoneFormControl'].invalid && (mpesaForm.controls['phoneFormControl'].touched || mpesaForm.controls['phoneFormControl'].dirty)" class="text-danger">
+                <span *ngIf="mpesaForm.controls['phoneFormControl'].errors?.['required']">This field is required</span>
+                <span *ngIf="mpesaForm.controls['phoneFormControl'].errors?.['invalidPhone']">Invalid phone number format</span>
+            </div>
+            </div>
+            <div class="col-12">
+              <button type="submit" class="btn btn-success" name="submit" >Pay</button>
+            </div>
+          </form>
+          
               <!--bs5 input-->
           </div>
+            <!-- PayPal form -->
+            <form class="row g-3 form-container" id="paypalForm">
+              <!-- Your PayPal form goes here -->
+              <div class="media mt-4 pl-2">
+                <img src="assets/img/Paypal.png" class="mr-3" height="75" />
+                <div class="media-body">
+                  <h6 class="mt-1">Enter Amount & Email</h6>
+                </div>
+              </div>
+              <div class="col-12">
+                  <label for="paypalAmount" class="form-label">PayPal Amount</label>
+                  <input type="text" class="form-control" id="paypalAmount" placeholder="Enter PayPal Amount" name="paypalAmount">
+              </div>
+              <div class="col-12">
+                  <label for="paypalEmail" class="form-label">PayPal Email</label>
+                  <input type="email" class="form-control" id="paypalEmail" placeholder="Enter PayPal Email" name="paypalEmail">
+              </div>
+              <div class="col-12">
+                  <button type="submit" class="btn btn-primary" name="submitPaypal" value="submitPaypal">Submit PayPal</button>
+              </div>
+          </form>
+          
+          <!-- Card form -->
+          <form class="row g-3 form-container" id="cardForm">
+              <!-- Your Card form goes here -->
+              <div class="media mt-4 pl-2">
+                <img src="assets/img/Card.png" class="mr-3" height="75" />
+                <div class="media-body">
+                  <h6 class="mt-1">Enter Number & Expiry</h6>
+                </div>
+              </div>
+              <div class="col-12">
+                  <label for="cardNumber" class="form-label">Card Number</label>
+                  <input type="text" class="form-control" id="cardNumber" placeholder="Enter Card Number" name="cardNumber">
+              </div>
+              <div class="col-12">
+                  <label for="expiryDate" class="form-label">Expiry Date</label>
+                  <input type="text" class="form-control" id="expiryDate" placeholder="Enter Expiry Date" name="expiryDate">
+              </div>
+              <div class="col-12">
+                  <button type="submit" class="btn btn-primary" name="submitCard" value="submitCard">Submit Card</button>
+              </div>
+          </form>
         </div>
       </div>
     <script
@@ -63,5 +113,12 @@
     <script type="text/javascript" src=""></script>
     <script type="text/javascript" src=""></script>
     <script type="text/Javascript"></script>
+    <script>
+     function showForm(formId) {
+        $('.form-container').hide(); // Hide all forms
+        $('#' + formId).show(); // Show the selected form
+    }
+  </script>
+
   </body>
 </html>
